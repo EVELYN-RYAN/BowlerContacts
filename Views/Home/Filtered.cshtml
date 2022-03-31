@@ -1,0 +1,58 @@
+﻿@model List<Bowler>
+@{
+    ViewData["Title"] = ViewBag.Selected.TeamName;
+}
+<h2 style="background-color:rgb(230, 204, 255,.8)" class="text-center">@ViewBag.Selected.TeamName</h2>
+<div class="card-center">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Last Name</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Middle Initial</th>
+                <th scope="col">Address</th>
+                <th scope="col">City</th>
+                <th scope="col">State</th>
+                <th scope="col">Zip</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @ViewBag.Selected.TeamName
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            @foreach (Team t in ViewBag.Teams)
+                            {
+                                <a class="dropdown-item" asp-controller="Home" asp-action="Filtered" asp-route-id="@t.TeamID">@t.TeamName</a>
+                            }
+                        </div>
+                    </div>
+                </th>
+                <th colspan="2" scope="col">
+                    <a class="btn btn-light" asp-controller="Home" asp-action="Index">Remove Filter</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var b in Model)
+            {
+            <tr>
+                <td>@b.BowlerLastName</td>
+                <td>@b.BowlerFirstName</td>
+                <td>@b.BowlerMiddleInit</td>
+                <td>@b.BowlerAddress</td>
+                <td>@b.BowlerCity</td>
+                <td>@b.BowlerState</td>
+                <td>@b.BowlerZip</td>
+                <td>@b.BowlerPhoneNumber</td>
+                <td style="background-color:rgb(230, 204, 255,.8);">@b.Team.TeamName</td>
+                <td><a asp-controller="Home" asp-action="Edit" asp-route-id="@b.BowlerID">Edit</a></td>
+                <td>
+                    <a asp-controller="Home" asp-action="Delete" asp-route-id="@b.BowlerID"
+                       onclick="return confirm('WARNING! This action cannot be undone');">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
