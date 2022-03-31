@@ -8,7 +8,7 @@ namespace BowlerContacts.Models
         {
 
         }
-
+        //Need to declare both to properly build the foreign key relationship
         public DbSet<Bowler> Bowlers { get; set; }
         public DbSet<Team> Teams { get; set; }
     }

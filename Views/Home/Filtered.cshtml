@@ -1,5 +1,6 @@
 ﻿@model List<Bowler>
 @{
+    //What team was filtered will be shown therefore @model is above
     ViewData["Title"] = ViewBag.Selected.TeamName;
 }
 <h2 style="background-color:rgb(230, 204, 255,.8)" class="text-center">@ViewBag.Selected.TeamName</h2>
@@ -19,7 +20,8 @@
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             @ViewBag.Selected.TeamName
-                        </button>
+                        </button>       
+                            @*Loads all team data to build dropdown team filter*@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             @foreach (Team t in ViewBag.Teams)
                             {

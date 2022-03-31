@@ -27,13 +27,14 @@ namespace BowlerContacts
         {
             services.AddControllersWithViews();
             services.AddDbContext<BowlersDbContext>(options =>
-            {
+            { //Only need one connection string but multiple AddDbContext
                 options.UseMySql(Configuration["ConnectionStrings:BowlersDbConnection"]);
             });
             services.AddDbContext<TeamsDbContext>(options =>
             {
                 options.UseMySql(Configuration["ConnectionStrings:BowlersDbConnection"]);
             });
+            //Setting up services to recognize I and EF as a Unit for implementation
             services.AddScoped<IBowlersRepository, EFBowlersRepository>();
             services.AddScoped<ITeamsRepository, EFTeamsRepository>();
         }

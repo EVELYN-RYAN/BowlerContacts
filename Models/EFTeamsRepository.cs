@@ -11,7 +11,7 @@ namespace BowlerContacts.Models
         }
 
         public IQueryable<Team> Teams => _context.Teams;
-
+        //Implement the interface with Save/Add/Delete
         public void SaveTeam(Team t)
         {
             _context.Update(t);

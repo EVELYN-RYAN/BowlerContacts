@@ -50,6 +50,7 @@
             <label asp-for="TeamID">Team:</label>
             <select asp-for="TeamID" class="form-control">
                 <option value="">Select a Team</option>
+                 @*Make sure the View bag is passed to generate numbers *@
                 @foreach (Team t in ViewBag.Teams)
                 {
                     <option value="@t.TeamID">@t.TeamName</option>

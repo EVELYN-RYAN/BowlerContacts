@@ -12,7 +12,7 @@ namespace BowlerContacts.Models
         }
 
         public IQueryable<Bowler> Bowlers => _context.Bowlers;
-
+        //Implement the interface with Save/Add/Delete
         public void SaveBowler(Bowler b)
         {
             _context.Update(b);
